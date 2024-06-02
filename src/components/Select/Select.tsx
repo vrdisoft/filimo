@@ -62,14 +62,12 @@ export const Select = (props: SelectProps) => {
     return lable
   }, [lable, selectedValue, multi, objOptions])
 
-  useEffect(() => {}, [])
-
   const borderColor = selectedValue?.length > 0 ? 'border-orange-300' : 'border-gray-400'
 
   return (
     <div className="relative">
       <div
-        className={`w-[350px] h-[45px]  bg-zinc-800 text-white border-solid border  rounded-md flex flex-row-reverse justify-between items-center px-2 ${borderColor}`}
+        className={`w-[350px] h-[45px]  bg-zinc-800 text-white border-solid border  rounded-md flex justify-between items-center px-2 ${borderColor}`}
         onClick={handleOpen}
       >
         {selectLable}
