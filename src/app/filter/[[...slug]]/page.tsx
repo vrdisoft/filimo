@@ -12,6 +12,7 @@ export default function Filter() {
     { title: 'بالاترین امتیاز', value: 'max-rate' },
     { title: 'پایین ترین امتیاز', value: 'min-rate' },
   ]
+
   return (
     <main className="flex flex-col md:flex-row justify-center items-center gap-8 p-12">
       <Select lable="ژانر" options={genreOptions} columns={2} multi />
