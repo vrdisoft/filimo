@@ -1,12 +1,12 @@
+import { MovieType } from '@/type'
+
 import jsonFile from '../data/data.json' assert { type: 'json' }
-import { MovieType } from './type'
 
 const movieList = jsonFile as unknown as MovieType[]
-const PAGE_SIZE = 40
 export const movieRepo = {
-  getMovies: (page: number, filter: string[], sort: string) => {
-    const startIndex = (page - 1) * PAGE_SIZE
-    const endIndex = page * PAGE_SIZE
+  getMovies: (page: number, filter: string[], sort: string, pageSize: number) => {
+    const startIndex = (page - 1) * pageSize
+    const endIndex = page * pageSize
 
     const objFilter: { [key: string]: string } = {}
     filter.forEach(item => (objFilter[item] = item))
@@ -17,9 +17,9 @@ export const movieRepo = {
         : [...movieList]
     if (sort) {
       if (sort === 'max-rate') {
-        data.sort((a, b) => (a.rate_avrage > b.rate_avrage ? 1 : -1))
-      } else {
         data.sort((a, b) => (a.rate_avrage < b.rate_avrage ? 1 : -1))
+      } else {
+        data.sort((a, b) => (a.rate_avrage > b.rate_avrage ? 1 : -1))
       }
     }
     return {
