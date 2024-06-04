@@ -6,7 +6,7 @@ import { List } from './list'
 import { SelectProps } from './type'
 
 export const Select = (props: SelectProps) => {
-  const { lable, options, columns, multi, value } = props
+  const { label, options, columns, multi, value, onChange } = props
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [selectedValue, setSelectedValue] = useState<string | string[]>(multi ? [] : '')
 
@@ -21,15 +21,25 @@ export const Select = (props: SelectProps) => {
   const handleOnChange = (value: string, checked: boolean) => {
     if (multi) {
       if (checked) {
-        setSelectedValue(prevState => [...(prevState as string[]), value])
+        setSelectedValue(prevState => {
+          const newState = [...(prevState as string[]), value]
+          onChange?.(newState)
+          return newState
+        })
       } else {
-        setSelectedValue(prevState => (prevState as string[]).filter(item => item !== value))
+        setSelectedValue(prevState => {
+          const newState = (prevState as string[]).filter(item => item !== value)
+          onChange?.(newState)
+          return newState
+        })
       }
     } else if (checked) {
       setSelectedValue(value)
+      onChange?.(value)
       handleClose()
     } else {
       setSelectedValue('')
+      onChange?.('')
     }
   }
 
@@ -47,7 +57,7 @@ export const Select = (props: SelectProps) => {
     return obj
   }, [options])
 
-  const selectLable = useMemo(() => {
+  const selectLabel = useMemo(() => {
     if (selectedValue?.length > 0) {
       if (multi) {
         return (selectedValue as string[])?.reduce(
@@ -59,8 +69,8 @@ export const Select = (props: SelectProps) => {
       return objOptions[selectedValue as string]
     }
 
-    return lable
-  }, [lable, selectedValue, multi, objOptions])
+    return label
+  }, [label, selectedValue, multi, objOptions])
 
   const borderColor = selectedValue?.length > 0 ? 'border-orange-300' : 'border-gray-400'
 
@@ -69,8 +79,9 @@ export const Select = (props: SelectProps) => {
       <div
         className={`w-[350px] h-[45px]  bg-zinc-800 text-white border-solid border  rounded-md flex justify-between items-center px-2 ${borderColor}`}
         onClick={handleOpen}
+        data-testid="select"
       >
-        {selectLable}
+        {selectLabel}
         {isOpen ? <FaSortUp className="text-gray-400" /> : <FaSortDown className="text-gray-400" />}
       </div>
       {isOpen && (

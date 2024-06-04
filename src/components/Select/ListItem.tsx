@@ -13,7 +13,7 @@ export const ListItem = (props: ListItemProps) => {
         e.nativeEvent.stopImmediatePropagation()
       }}
     >
-      <CheckBox lable={title} onChange={checked => onSelectedChange?.(value, checked)} checked={checked} />
+      <CheckBox label={title} onChange={checked => onSelectedChange?.(value, checked)} checked={checked} />
     </div>
   )
 }
