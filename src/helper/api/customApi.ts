@@ -1,5 +1,4 @@
 import Axios, { AxiosError, AxiosInstance, AxiosRequestConfig } from 'axios'
-console.log(process.env)
 const axiosInstance = Axios.create({
   baseURL: process.env.NEXT_PUBLIC_API,
 })

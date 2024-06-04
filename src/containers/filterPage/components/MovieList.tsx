@@ -10,7 +10,7 @@ export const MovieList = (props: MovieListProps) => {
 
   return (
     <div className="text-white grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-      {data.map((movie, index) => (
+      {data?.map((movie, index) => (
         <div key={movie?.id} ref={index === data.length - 1 ? lastElementRef : null}>
           <MovieCard movie={movie} />
         </div>

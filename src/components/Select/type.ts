@@ -3,7 +3,7 @@ export type option = {
   value: string
 }
 export type SelectProps = {
-  lable: string
+  label: string
   options: option[]
   columns: number
   multi?: boolean
@@ -11,7 +11,7 @@ export type SelectProps = {
   onChange?: (value: string | string[]) => void
 }
 
-export type ListProps = Omit<SelectProps, 'lable' | 'value'> & {
+export type ListProps = Omit<SelectProps, 'label' | 'value'> & {
   selectedValue?: string | string[]
   onSelectedChange: (value: string, checked: boolean) => void
   onClose: () => void
