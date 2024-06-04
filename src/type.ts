@@ -9,4 +9,7 @@ export type MovieType = {
   movie_title: string
   rate_avrage: number
   categories: Category[]
+  pic: {
+    movie_img_b: string
+  }
 }

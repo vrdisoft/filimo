@@ -22,7 +22,7 @@ export const List = (props: ListProps) => {
   return (
     <div
       ref={wrapperRef}
-      className="w-[350px] max-h-[250px] overflow-y-auto absolute bg-black-list text-white border-solid border border-black-border rounded-md px-2 py-4 mt-2 grid gap-2 "
+      className="w-[350px] max-h-[250px] overflow-y-auto absolute bg-black-list text-white border-solid border border-black-border rounded-md px-2 py-4 mt-2 grid gap-2 z-10"
       style={{ gridTemplateColumns: `repeat(${columns}, 1fr)` }}
     >
       {options.map(option => (

@@ -8,6 +8,7 @@ export type SelectProps = {
   columns: number
   multi?: boolean
   value?: string | string[]
+  onChange?: (value: string | string[]) => void
 }
 
 export type ListProps = Omit<SelectProps, 'lable' | 'value'> & {
