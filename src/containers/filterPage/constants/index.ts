@@ -9,3 +9,5 @@ export const rateOptions = [
   { title: 'بالاترین امتیاز', value: 'max-rate' },
   { title: 'پایین ترین امتیاز', value: 'min-rate' },
 ]
+
+export const PAGE_SIZE = 15
