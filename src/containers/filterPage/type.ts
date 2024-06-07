@@ -6,9 +6,7 @@ export type MovieListResponse = {
 }
 
 export type MovieListProps = {
-  data: MovieType[]
-  isLoading?: boolean
-  fetchNextPage: () => void
+  slug: string[]
 }
 
 export type MovieCardProps = {
